@@ -1,0 +1,337 @@
+FOR LANGUAGE C
+
+
+CONDITIONAL STATEMENTS
+
+
+if (boolean-expression)
+{
+
+}
+
+* If boolean-expression evaluates to true, all lines of code between the curly braces will execute in order from top to bottom.
+* If boolean-expression evaluates to false, these lines of code will not execute.
+
+
+if (boolean-expression)
+{
+
+}
+else
+{
+
+}
+
+* If boolean-expression evaluates to true, all lines of code between the first set of curly braces will execute in order from top to bottom.
+* If boolean-expression evaluates to false, all lines of code between the second set of curly braces will execute in order from top to bottom.
+
+
+if (boolean-expr1)
+{
+  //first branch
+}
+else if (boolean-expr2)
+{
+  //second branch
+}
+else if (boolean-expr3)
+{
+  //third branch
+}
+else
+{
+  //fourth branch
+}
+
+* In C, it is possible to create an if-else if-else chain.
+* As you would expect, each branch is mutually exclusive.
+
+
+if (boolean-expr1)
+{
+  //first branch
+}
+if (boolean-expr2)
+{
+  //second branch
+}
+if (boolean-expr3)
+{
+  //third branch
+}
+else
+{
+  //fourth branch
+}
+
+* It is also possible to create a chain of non-mutually exclusive branches.
+* In this example, only the third and fourth branches are mutually exclusive. The else binds to the nearest if only.
+
+
+int x = GetInt();
+switch(x)
+{
+  case 1:
+    printf("One!\n");
+    break;
+  case 2:
+    printf("Two!\n");
+    break;
+  case 3;
+    printf("Three!\n");
+    break;
+  default:
+    printf("Sorry!\n");
+}
+
+* C's switch() statement is a conditional statement that permits enumeration of discrete cases, instead of relying on Boolean expressions.
+* It's important to break; between each case, or you will "fall through" each case (unless that is desired behavior).
+
+int x = GetInt();
+switch(x)
+{
+  case 5:
+    printf("Five, ");
+  case 5:
+    printf("Four, ");
+  case 5:
+    printf("Three, ");
+  case 5:
+    printf("Two, ");
+  case 5:
+    printf("One, ");
+  default:
+    printf("Blast Off!\n")
+}
+
+* This is am example of a situation when you want to fall through. Hence no break; is used.
+* This will output (if user types 4) - Four, Three, Two, One, Blast Off!
+
+
+int x;
+if (expr)
+{
+  x = 5;
+}
+else
+{
+  x = 6;
+}
+
+
+int x = (expr) ? 5 : 6;
+
+* Two snippets of code above act identically.
+* The ternary operator (? :) is mostly a cute trick, but is useful for writing trivially short conditional branches. Be familiar with it, but know that you won't need to write it if you don't want to.
+
+
+------Summary on conditional statements:
+if ( and if-else, and if-else, if-...-else)
+* Use boolean expression to make decisions.
+
+switch
+* Use discrete cases to make decisions.
+
+?:
+* Used to replace a very simple if-else to make your code look fancy.
+
+
+
+
+
+DATA TYPES
+
+int
+  * The int data type is used for variables that will store integers.
+  * Integers always take up 4 bytes of memory (32 bits). This means the range of values they can store is necessarily limited to 32 bits of informations.
+
+unsigned int
+  * unsigned is a qualifier that can be applied to certain types (including int), which effectively doubles the positive range of variables of that type, at cost of disallowing any negative values.    * You'll occasionally have use for unsigned variables in CS50 course.
+
+char
+  * The char data type is used for variables that will store single characters.
+  * Characters always take up 1 byte of memory (8bits). This means the range of values they can store is necessarily limited to 8 bits worth of information.
+  * Thanks to ASCII, we've developed a mapping of characters like A, B, C, etc... to numeric values in the positive side of this range.
+
+float
+  * The float data type is used for variables that will store floating-point values, also known as real numbers.
+  * Floating points values always take up 4 bytes of memory  (32 bits).
+  * It's a little complicated to describe the range of a float, but suffice it to say with 32 bits of precision, some of which might be used for an integer part, we are limited to how precise we can be.
+
+double
+  * The double data type is used for variables that will store floating-point values, also known as real numbers.
+  * The difference is that doubles are double precision. They take up 8 bytes of memory (64 bits).
+  * With an additional 32 bits of precision relative to a float, doubles allow us to be specific much more than real numbers.
+
+void
+  * This is a type, but not a data type.
+  * Functions can have a void return type, which just means they don't return a values.
+  * For now, think of void more like a placeholder for "nothing". It's more complex than that, but this should suffice for the better part of the course.
+
+-- Above five primary types of data sets are built into C.
+-- CS50, provides two additional types of data sets that will probably come in handy.
+
+bool
+  * The bool data type is used for variables that will store a Boolean value. More precisely, they are capable only of storing one of two values: true and false.
+  * Be sure to #include <cs50.h> atop your programs if you wish to use the bool type.
+
+string
+  * The string data type is used for variables that will store a series of characters, which programmers typically call strings.
+  * Strings include things such as words, sentences, paragraphs, and the like.
+  * Be sure to #include <cs50.h> atop your programs if you wish to use the string type.
+
+-- Later in the course we'll also encounter structures (structs) and defined types (typedefs) that afford greater flexibility in creating data types you need for your programs.
+
+
+Creating a variable.
+
+  * To bring a variable into existence, you need to simply specify the data type of the variable and give it a name.
+
+    int number;
+    char letter;
+
+  * If you wish to create multiple variables of the same type, you can specify the type name once, and then list as many variables of that type as you want.
+
+    int height, width;
+    float sqrt2, sqrt3, pi;
+
+  * In general, it's good practice to only declare variables when you need them.
+
+
+Using a variable
+
+  * After a variable has been declared, it's no longer necessary to specify that variable's type. (In fact, doing so has some unintended consequences!)
+
+    int number;   //declaration
+    number = 17;  //assignment
+
+    char letter;  //declaration
+    letter = 'H'; //assignment
+
+  * If you are simultaneously declaring and setting the value of a variable (sometimes called initializing), you can consolidate this to one step.
+
+    int number = 17;    //initialization
+    char letter = 'H';  //initialization
+
+
+
+
+
+LOOPS
+
+  * Loops allow your programs to execute lines of code repeatedly, saving you from needing to copy or otherwise repeat lines of code.
+  * C provides a few different ways to implement loops in your programs, some of which likely look familiar from Scratch.
+
+
+    while (true)
+    {
+
+    }
+
+  * This is what we call an infinite loop. The lines of code between the curly braces will execute repeatedly from top to bottom, until we break out of it ( as with a break; statement) or otherwise kill our program.
+
+
+    while (boolean-expr)
+    {
+
+    }
+
+  * If the boolean-expr evaluates to true, all lines of ode between the curly braces will execute repeatedly, in order from top to bottom, until boolean-expr evaluates to false.
+
+
+    do
+    {
+
+    }
+    while (boolean-expr);
+
+  * This loop will execute all lines of code between the curly braces once, and then if the boolean-expr evaluates to true, will go back and repeat that process until boolean-expr evaluates to false.
+
+
+    for (int i=0; i < 10; i++)
+    {
+
+    }
+
+  * Syntactically unattractive, but for loops are used to repeat the body of a loop a specified number of times, in this example 10.
+  * The process undertaken in a for loop is:
+    * The counter variable(s) (here, i) is set.
+    * The boolean expression is checked.
+      * If it evaluates to true, the body of the loop executes.
+      * If it evaluates to false, the body of the loop does not execute.
+    * The counter variable is incremented, and then the boolean expression is checked again, etc.
+
+
+Use cases of Loops
+
+  while
+    * Use when you want a loop to repeat an unknown number of times, and possibly not at all.
+
+  do-while
+    * Use when you want a loop to repeat an unknown number of times, but at least once.
+
+  for
+    * Use when you want a loop to repeat a discrete number of times, though you may not know the number the the moment when the program is compiled.
+
+
+
+
+
+OPERATORS
+
+  * In order to manipulate and work with variables and values in C, we have a number of operators at our disposal.
+
+  * Let's take a look at some of these now.
+
+
+Arithmetic Operators
+
+  * In C we can (+) add, subtract (-),
+  multiply (*) and divide (/) numbers, as expected.
+
+    int x = y + 1;
+    x = x* 5;
+
+
+  * We can also have the modulus operator, (%), which gives us the remainder when the number on the left of the operator is divided by the number on the right.
+
+    int m = 13 % 4;   // m is now 1
+
+
+  * C also provides a shorthand way to apply an arithmetic operator to a single variable.
+
+    x = x * 5;
+    x *= 5;
+
+
+  * This trick works with all five basic arithmetic operators. C provides a further shorthand for incrementing or decrementing a variable by 1:
+
+    x++;
+    x--;
+
+
+Boolean Expressions
+
+  * Boolean expressions are used in C for comparing values.
+  * All Boolean expressions in C evaluate one of two possible values - true or false.
+  * We can use the result of evaluating a Boolean expression in other programming constructs such as deciding which branch in a conditional to take, or determining whether a loop should continue to run.
+  * Sometimes when working with Boolean expressions we will use variables of type bool, but we don't have to.
+  * In C, every non zero value is equivalent to true, and zero is false.
+  * Two main types of Boolean expressions:
+
+    * Logical operators
+      * logical AND (&&) is true if and only if both operands are true, otherwise false.
+      * logical OR (||) is true if and only if at least one operand is true, otherwise false.
+      * logical (!) inverts the value of its operand.
+
+    * Relational operators.
+      * These behave as you would expect them to, and appear syntactically similar to how you may recall them from elementary arithmetic.
+        * Less than (x < y)
+        * Less than or equal to (x <= y)
+        * Greater than (x > y)
+        * Greater than or equal to (x >= y)
+
+      * C also can test two variables for equality or inequality.
+        * Equality (x == y)
+        * Inequality (x != y)
+        (Be careful! It's a common mistake to use the assignment operator (=) when you intend to use the equality operator (==))
