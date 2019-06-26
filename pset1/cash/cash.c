@@ -23,14 +23,14 @@ int main(void)
     int d = 0;
 
     // Calculates the number of 0.25 coins needed.
-    if (cents > 25)
+    if (cents >= 25)
     {
         a = cents / 25;
         cents = cents % 25;
     }
 
     // Calculates the number of 0.10 coins needed.
-    if (cents > 10)
+    if (cents >= 10)
     {
         b = cents / 10;
         cents = cents % 10;
