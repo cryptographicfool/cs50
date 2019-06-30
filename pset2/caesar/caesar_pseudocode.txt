@@ -1,0 +1,11 @@
+- User provides the key while executing the program using command-line argument.
+- Make sure user input 'k' is a digit, otherwise prompt again with syntax.
+- Convert the command line argument from string to an int 'k'.
+- Prompt user to input a plaintext message. Store the message as an array 'message'.
+- Convert the message into encrypted.
+  - Go over each character typed.
+  - If character is uppercase, rotate it as per k and print preserving the case.
+  - If character is lowercase, rotate it as per k and print preserving the case.
+  - If it is neither, print as it is.
+  - Formula: encrypted = (Message[n] + k) % 26. n is the nth character in the message.
+- Print new line.

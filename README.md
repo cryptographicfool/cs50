@@ -21,4 +21,10 @@ A program that creates double half-pyramid from mario game using hashes (#) inst
 A program to count minimum number of coins needed to give user the required change using greedy algorithm.
 
 ### credit.c
-A program to check if a credit card number is valid, and whether it is a MasterCard, VISA or an AmEx card. 
+A program to check if a credit card number is valid, and whether it is a MasterCard, VISA or an AmEx card.
+
+## week_2 - pset2
+I was introduced to arrays, strings and functions in C.
+
+### caesar.c
+A program that converts plaintext to ciphertext using a key provided by the user.
