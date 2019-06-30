@@ -1,0 +1,15 @@
+- Define long to store cc number.
+- Define digit1 = 0, digit2 = 0, numberOfDigits=n, sumOdd=0, sumEven=0
+- Prompt user to imput cc number, which is a long > 0.
+- Seperate the digits in cc number, store number of digits in numberOfDigits.
+  - Store digit1 and digit2.
+  - Calculate sum of even digits.
+  - Calculate sum of odd digits.
+  - increment numberOfDigits.
+  - loop while cc number is > 0.
+- Check if input is valid cc number.
+- Calculate first 2 digits on card.
+- Check if it is visa. Print Visa.
+- Check if it is Mastercard. Print Mastercard.
+- Check if it is Amex, print Amex.
+- Print Invalid if it the number is invalid.
