@@ -111,6 +111,103 @@ ARRAYS
 
 
 
+FUNCTIONS
+
+  * What is a function?
+    * A blank box with a set of 0+ inputs and 1 output.
+  * Why call it a blank box?
+    * If we aren't writing the functions ourselves, we don't need to know the underlying implementation.
+    * That's part of the contract of using functions. The behaviour is typically predictable besed on the name. That's why most functions have clear, obvious(ish) names, and are well-documented.
+
+  * Why use finctions?
+    * Organisation
+      * Functions help break up a complicated probelm into more managable subparts.
+    * Simplification
+      * Smaller components tend to be easier to design, implement, and debug.
+    * Reusability
+      * Functions can be recycled; you only need to write them once, but can use them as often as you need!
+
+  * Finction Declarations.
+    * The first step to creating a function is to declare it. This gives the compiler a heads-up that a user-written function appears in the code.
+    * Function declarations should always go atop your code, before you begin writing main().
+    * There is a standard form that every function declaration follows.
+
+      return-type name(argument-list);
+
+    * The return-type is what kind of variable the function will output.
+    * The name is what you want to call your function.
+    * The argument-list is the comma-seperated set of inputs to your function, each of which has a type and a name.
+
+    * A function to add two integers.
+
+        int add_two_ints(int a, int b);
+
+      * The sum of two integers ins going to be an integer as well.
+      * Given what this function does, make sure to give it an appropriate name.
+      * There are two inputs to this function, and we need to give a name to each of them for purposes of the function. There's nothing important about these inputs as far as we know, so giving them simple names is okay.
+
+    * A function to multply two floating point numbers.
+
+        float multi_two_reals(float x, float y);
+        // or
+        double multi_two_reals(double x, double y); // for more precision
+
+      * The product of two floating point numbers is also a floating point number.
+      * Let's be sure to give this a relevant name.
+      * Again, the names of these particular inputs don't seem to be important, so we can call them anything simple.
+
+  * Function Definitions.
+    * The second step to creating a function is to difine it. This allows for predictable behaviour when function is pulled with inputs.
+
+      float multi_two_reals(float x, float y)
+      {
+        float product = x * y;
+        return product;
+      }
+      // or
+      float multi_two_reals(float x, float y)
+      {
+        return x * y;
+      }
+
+
+      int add_two_ints(int a, int b)
+      {
+        return a + b;
+      }
+
+  * Function calls.
+    * To call a function, simply pass its appropriate arguments and assign its return valyue to something of the correct type.
+
+  * Function Miscellany.
+    * Recall from data types that funtions can sometimes take no inputs. In that case, we declare the function as having a void argument list.
+    * Recall also that functions sometimes do not have an output. In that case, we declare the function as having a void return type.
+
+  * Example
+    * Declare and write a function called valid_triangle that takes three real numbers representing the lengths ofthe three sides of a triangle as its arguments, and outputs either true or false, depending on whether those three lengths are capable of making a triangle.
+
+      bool valid_triangle(float x, float y, float z);
+
+      bool valid_triangle(float x, float y, float z)
+      {
+        // check for all positive sides
+        if (x <= 0 || y <= 0 || z <=0)
+        {
+          return false;
+        }
+
+        // check that sum of any two sides is greater than third
+        if ((x + y <= z) || (x + z <= y) || (y + z <= x))
+        {
+          return false;
+        }
+
+        // if we passed both tests, we're good.
+        return true;
+      }
+
+
+
 LINEAR SEARCH
 
   * In linear search, the idea of the algorithm is to iterate across the array from left to right, searching for a specified element.
