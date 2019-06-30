@@ -1,0 +1,110 @@
+FOR LANGUAGE C (week 2)
+
+
+ALGORITHMS SUMMARY
+
+Selection Sort      Find the smallest unsorted element in an array and swap it with the first unsorted element of that array.
+Bubble Sort         Swap adjacent pairs of elements if they are out of order, effectively "bubbling" larger elements to the right and smaller ones to the left.
+Insertion Sort      Proceed once through the array from left-to-right, shifting elements as necessary to insert each element into its correct place.
+Merge Sort          Split the full array into subarrays, then merge those subarrays back together into correct order.
+Linear Search       Iterate across the array from left-to-right, trying to find the target element.
+Binary Search       Given a sorted array, divide and conquer by systematically elimination half of the remaining elements in the search for the target element.
+
+
+
+ARRAYS
+
+  * Arrays are fundamental data structure, and they are extremely useful.
+  * We use arrays to hold values of the same type at contiguous memory locations.
+  * One way to analogize the notion of array is to think of your local post office, which usually has a large bank of post office boxes.
+
+  * In C, elements of an array are indexed starting from 0.
+    * This is one of the major reasons we count from zero!
+  * If an array consists of n elements, the first element is located at index 0. The last element is located at index(n-1).
+  * C is very lenient. It will not prevent you from going "out of bounds" of your array; be careful.
+
+  * Array declarations
+
+      type name[size];
+
+      examples:
+
+      int student_grades[40];
+      double menu_prices[8];
+
+  * The type is what kind of cariable each element of the array will be.
+  * The name is what you want to call your array.
+  * The size is how many elements you would like your array to contain.
+
+  * If you think of a single element of an array of type data-type the same as you would any other variable of type data-type (which, effectively, it is) then all the familiar operations make sense.
+
+      bool truthtable[10];
+
+      truthtable[2] = false;
+      if(truthtable[7] == true)
+      {
+        printf("TRUE!\n");
+      }
+      truthtable[10] = true; // as we are counting from 0 and our array has 10 elements, using 10th element here can be problematic, and 9 should be used.
+
+  * When declaring and initializing an array simultaneously, tere is a special syntax that may be used to fill up the array with its starting values.
+
+      // instantiation syntax
+      bool truthtable[3] = { false, true, true };
+
+      // individual element syntax
+      bool truthtable[3];
+      truthtable[0] = false;
+      truthtable[1] = true;
+      truthtable[2] = true;
+
+  * When declaring and initializing an array simultaneously, there is a special sytax that may be used to fill up the array with its starting values.
+
+      // instantiation syntax
+      bool truthtable[] = { false, true, true };
+
+  * Arrays can consist of more than a single dimension. You can have as many size specifiers as you wish.
+
+      bool battleship[10][10];
+
+  * You can choose to think of this as either a 10x10 grid of cells.
+    * In memory though, it's really just a 100-element one-dimensional array.
+    * Multi-dimensional arrays are reat abstractions to help visualize game boards or other complex representations.
+
+  * While we can treat individual elements of arrays as variables, we cannot treat the entire array themselves as variables.
+  * We cannot, for instance, assign one array to another using the assignment operator. This is not legal C.
+  * Instead, we must use a loop to copy over the elements one at a time.
+
+      int foo[5] = { 1, 2, 3, 4, 5 };
+      int bar[5];
+
+      for (int j = 0; j < 5; j++)
+      {
+        bar[j] = foo[j];
+      }
+
+  * Recall that most variable in C are passed by value in function calls.
+  * Arrays do not follow this rule. Rather they are passed by reference. The calee recieves the actual array, not a copy of it.
+  * For now, we will gloss over why arrays have this special property, but we'll return to it soon enough!
+
+      void set_array(int array[4]);
+      void set_int(int x);
+
+      int main(void)
+      {
+        int a = 10;
+        int b[4] = { 0, 1, 2, 3 };
+        set_int(a);
+        set_array(b);
+        printf("%d %d\n", a, b[0]);  // printf will print 10, 22
+      }
+
+      void set_array(int array[4])
+      {
+        array[0] = 22;
+      }
+
+      void set_int(int x)
+      {
+        x = 22;
+      }
