@@ -27,4 +27,7 @@ A program to check if a credit card number is valid, and whether it is a MasterC
 I was introduced to arrays, strings and functions in C.
 
 ### caesar.c
-A program that converts plaintext to ciphertext using a key provided by the user.
+A program that converts plaintext input to ciphertext using a key provided by the user. This program is based on Caesar Cipher and takes numerical key. 
+
+### vigenere.c
+A program that converts plaintext input to ciphertext using a key provided by the user. This program is based on Vigenere Cipher and takes a set of alphabets as the key.
