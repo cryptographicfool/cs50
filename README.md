@@ -2,6 +2,7 @@
 
 I will be updating these as and when I go through the problem sets. The repository is a work in progress. (Lecture and notes files are included in each folder for the specific week.)
 
+---
 
 ## week_0 - pset0
 
@@ -9,6 +10,7 @@ I used scratch and made a simple single level dungeon game in scratch, you need 
 
 You can play the game [here](https://scratch.mit.edu/projects/317471408/).
 
+---
 
 ## week_1 - pset1
 I was introduced to C in week 1 and solved the following problems.
@@ -25,6 +27,7 @@ A program to count minimum number of coins needed to give user the required chan
 ### credit.c
 A program to check if a credit card number is valid, and whether it is a MasterCard, VISA or an AmEx card.
 
+---
 
 ## week_2 - pset2
 I was introduced to arrays, strings and functions in C.
