@@ -24,8 +24,6 @@ int main(int argc, string argv[])
             }
         }
         // if it is a digit.
-        // define a string to store the plaintext.
-        string ct = 0;
         // get input from use.
         string pt = get_string("plaintext: ");
         printf("ciphertext: ");

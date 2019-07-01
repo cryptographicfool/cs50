@@ -1,0 +1,10 @@
+- Use provides the key while execution the program using command-line argument.
+- Make sure user input is a set of alphabets, otherwise prompt again with syntax.
+- If input is valid, prompt user to enter plaintext message.
+- Convert the key into new key by repeating alphabets until key length is equal to message length.
+- Convert the message into encrypted.
+  - Go over each character typed.
+  - If character is uppercase, rotate it as per the numeric value of key alphabet corresponding to the message alphabet and print preserving the case.
+  - If character is lowercase, rotate it as per the numeric value of key alphabet corresponding to the message alphabet and print preserving the case.
+  - If it is neither, print as it is.
+- Print new line.
