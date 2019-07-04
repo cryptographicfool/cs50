@@ -40,3 +40,6 @@ A program that converts plaintext input to ciphertext using a key provided by th
 
 ### vigenere.c
 A program that converts plaintext input to ciphertext using a key provided by the user. This program is based on Vigenere Cipher and takes a set of alphabets as the key.
+
+### crack.c
+A program that takes hashed password as an input and outputs password in plain text. This is based on C's DES based crypt function.
