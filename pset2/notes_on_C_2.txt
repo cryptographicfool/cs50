@@ -32,7 +32,7 @@ ARRAYS
       int student_grades[40];
       double menu_prices[8];
 
-  * The type is what kind of cariable each element of the array will be.
+  * The type is what kind of variable each element of the array will be.
   * The name is what you want to call your array.
   * The size is how many elements you would like your array to contain.
 
@@ -69,7 +69,7 @@ ARRAYS
 
   * You can choose to think of this as either a 10x10 grid of cells.
     * In memory though, it's really just a 100-element one-dimensional array.
-    * Multi-dimensional arrays are reat abstractions to help visualize game boards or other complex representations.
+    * Multi-dimensional arrays are real abstractions to help visualize game boards or other complex representations.
 
   * While we can treat individual elements of arrays as variables, we cannot treat the entire array themselves as variables.
   * We cannot, for instance, assign one array to another using the assignment operator. This is not legal C.
@@ -84,7 +84,7 @@ ARRAYS
       }
 
   * Recall that most variable in C are passed by value in function calls.
-  * Arrays do not follow this rule. Rather they are passed by reference. The calee recieves the actual array, not a copy of it.
+  * Arrays do not follow this rule. Rather they are passed by reference. The callee receives the actual array, not a copy of it.
   * For now, we will gloss over why arrays have this special property, but we'll return to it soon enough!
 
       void set_array(int array[4]);
@@ -117,17 +117,17 @@ FUNCTIONS
     * A blank box with a set of 0+ inputs and 1 output.
   * Why call it a blank box?
     * If we aren't writing the functions ourselves, we don't need to know the underlying implementation.
-    * That's part of the contract of using functions. The behaviour is typically predictable besed on the name. That's why most functions have clear, obvious(ish) names, and are well-documented.
+    * That's part of the contract of using functions. The behavior is typically predictable based on the name. That's why most functions have clear, obvious(ish) names, and are well-documented.
 
   * Why use finctions?
     * Organisation
-      * Functions help break up a complicated probelm into more managable subparts.
+      * Functions help break up a complicated problem into more manageable subparts.
     * Simplification
       * Smaller components tend to be easier to design, implement, and debug.
-    * Reusability
+    * Re-usability
       * Functions can be recycled; you only need to write them once, but can use them as often as you need!
 
-  * Finction Declarations.
+  * Function Declarations.
     * The first step to creating a function is to declare it. This gives the compiler a heads-up that a user-written function appears in the code.
     * Function declarations should always go atop your code, before you begin writing main().
     * There is a standard form that every function declaration follows.
@@ -136,7 +136,7 @@ FUNCTIONS
 
     * The return-type is what kind of variable the function will output.
     * The name is what you want to call your function.
-    * The argument-list is the comma-seperated set of inputs to your function, each of which has a type and a name.
+    * The argument-list is the comma-separated set of inputs to your function, each of which has a type and a name.
 
     * A function to add two integers.
 
@@ -146,7 +146,7 @@ FUNCTIONS
       * Given what this function does, make sure to give it an appropriate name.
       * There are two inputs to this function, and we need to give a name to each of them for purposes of the function. There's nothing important about these inputs as far as we know, so giving them simple names is okay.
 
-    * A function to multply two floating point numbers.
+    * A function to multiply two floating point numbers.
 
         float multi_two_reals(float x, float y);
         // or
@@ -157,7 +157,7 @@ FUNCTIONS
       * Again, the names of these particular inputs don't seem to be important, so we can call them anything simple.
 
   * Function Definitions.
-    * The second step to creating a function is to difine it. This allows for predictable behaviour when function is pulled with inputs.
+    * The second step to creating a function is to define it. This allows for predictable behavior when function is pulled with inputs.
 
       float multi_two_reals(float x, float y)
       {
@@ -177,14 +177,14 @@ FUNCTIONS
       }
 
   * Function calls.
-    * To call a function, simply pass its appropriate arguments and assign its return valyue to something of the correct type.
+    * To call a function, simply pass its appropriate arguments and assign its return value to something of the correct type.
 
   * Function Miscellany.
-    * Recall from data types that funtions can sometimes take no inputs. In that case, we declare the function as having a void argument list.
+    * Recall from data types that functions can sometimes take no inputs. In that case, we declare the function as having a void argument list.
     * Recall also that functions sometimes do not have an output. In that case, we declare the function as having a void return type.
 
   * Example
-    * Declare and write a function called valid_triangle that takes three real numbers representing the lengths ofthe three sides of a triangle as its arguments, and outputs either true or false, depending on whether those three lengths are capable of making a triangle.
+    * Declare and write a function called valid_triangle that takes three real numbers representing the lengths of the three sides of a triangle as its arguments, and outputs either true or false, depending on whether those three lengths are capable of making a triangle.
 
       bool valid_triangle(float x, float y, float z);
 
@@ -213,7 +213,7 @@ LINEAR SEARCH
   * In linear search, the idea of the algorithm is to iterate across the array from left to right, searching for a specified element.
 
   * In pseudocode:
-    * Repeat, starting at the first elemnt:
+    * Repeat, starting at the first element:
       * If the first element is what you're looking for (the target). stop.
       * Otherwise, move to the next element.
 
@@ -232,16 +232,16 @@ BINARY SEARCH
       * Calculate the middle point of the current (sub)array.
       * If the target is at the middle, stop.
       * Otherwise, if the target is less than what's at the middle, repeat, changing the end point to be just to the left of the middle.
-      * Otherwise, if the target is greatere than what's at the middle, repeat, changing the start point to be just to the right of the middle.
+      * Otherwise, if the target is greater than what's at the middle, repeat, changing the start point to be just to the right of the middle.
 
-  * Worst-case scenario: We have to divide a list of n elements in half repeatedly to find the target element, either because the target element will be found at the end of the last division or diesn't exist in the array at all.
-  * Best-case Scenario: The target element is at the midpoint of full array, and so we can stop loking immediately after we start.
+  * Worst-case scenario: We have to divide a list of n elements in half repeatedly to find the target element, either because the target element will be found at the end of the last division or doesn't exist in the array at all.
+  * Best-case Scenario: The target element is at the midpoint of full array, and so we can stop looking immediately after we start.
 
 
 
 BUBBLE SORT
 
-  * In bubble sort, the idea of the algorithm is to move higher valied elements generally to the right and lower valued elements generally to the left.
+  * In bubble sort, the idea of the algorithm is to move higher valued elements generally to the right and lower valued elements generally to the left.
 
   * In pseudocode:
     * Set swap counter to a non-zero value.
@@ -250,8 +250,8 @@ BUBBLE SORT
       * Look at each adjacent pair.
         * If two adjacent elements are not in order, swap them and add one to the swap counter.
 
-  * Worst-case scenario: The array is in reverse order; we have to "bubble" each of the n elements all the way across the array, and since we can only fully bubbble ne element into position per pass, we must do this n times.
-  * Best-case scenario: The aray is already perfectly sorted, and we make no swaps on the first pass.
+  * Worst-case scenario: The array is in reverse order; we have to "bubble" each of the n elements all the way across the array, and since we can only fully bubble one element into position per pass, we must do this n times.
+  * Best-case scenario: The array is already perfectly sorted, and we make no swaps on the first pass.
 
 
 
@@ -265,7 +265,7 @@ INSERTION SORT
       * Look at the next unsorted element. Insert into the "sorted" portion by shifting the requisite number of elements.
 
   * Worst-case scenario: The array is in reverse order; we ave to shift each of the n elements n positions each time we make an insertion.
-  * Best-case scenario: The array is already perfectly sorted, and we simply keep moving the line betwwen "unsorted" and 'sorted' as we examine each element.
+  * Best-case scenario: The array is already perfectly sorted, and we simply keep moving the line between "unsorted" and 'sorted' as we examine each element.
 
 
 
@@ -275,18 +275,18 @@ MERGE SORT
   * Merge sort leverages something called recursion, which we'll touch on in more detail in future.
 
   * In pseudocode:
-    * Sort the elft half of the array (assuming n > 1).
-    * Sort the right hal of the array (assuming n > 1).
+    * Sort the left half of the array (assuming n > 1).
+    * Sort the right half of the array (assuming n > 1).
     * Merge the two halves together.
 
   * Worst-case scenario: We have to split n elements up and recombine them, effectively doubling the sorted subarrays as we build them  up (combining sorted 1-element arrays into 2-element arrays, combining sorted 2-element arrays into 4-element arrays...).
-  * Best-case scenario: The array is already perfectly sorted. But we still have to split and recombine it back together with this algorighm.
+  * Best-case scenario: The array is already perfectly sorted. But we still have to split and recombine it back together with this algorithm.
 
 
 
 SELECTION SORT
 
-  * In the selection sort, the idea of the algoriht is to find the smallest unsorted element and add it to the end of the sorted list.
+  * In the selection sort, the idea of the algorithm is to find the smallest unsorted element and add it to the end of the sorted list.
 
   * In pseudocode:
     * Repeat until no unsorted elements remain:
@@ -294,4 +294,4 @@ SELECTION SORT
       * Swap the smallest found value with the first element of the unsorted part.
 
   * Worst-case scenario: We have to iterate over each of the n elements of the array (to find the smallest unsorted element) and we must repeat this process n times, since only one element gets sorted on each pass.
-  * Best-case scenario: Exactly the same! There's no way to gurantee the array is sorted until we go through this process for all the elements.
+  * Best-case scenario: Exactly the same! There's no way to guarantee the array is sorted until we go through this process for all the elements.
