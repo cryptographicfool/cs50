@@ -12,6 +12,69 @@ CALL STACKS
 
 
 
+POINTERS
+
+- Pointers prove an alternative way to pass data between functions.
+  - Recall that up to this point, we have passed all data by value, with one exception.
+  - When we pass data by value, we only pass a copy of that data.
+- If we use pointers instead, we have the power to pass the actual variable itself.
+  - That means that a change that is made in one function can impact what happens in a different function.
+  - Previously this wasn't possible!
+- Every file on your computer lives on your disk drive, be it a hard disk drive (HDD) or a solid-state drive (SDD).
+- Disk drives are just storage space; we can't directly work there. Manipulation and use of data can only take place in RAM, so we have to move data there.
+- Memory is basically a huge array of 8-bit wide bytes.
+  - 512 MB, 1 GB, 2 GB, 4 GB...
+- Memory needed by various data types:
+  - int         4
+  - char        1
+  - float       4
+  - double      8
+  - long long   8
+  - data_type*  4 or 8
+- Memory is a big array of byte sized cells.
+- Recall from our discussion of arrays that they not only are useful for storage of information but also for so-called random access.
+  - We can access individual elements of the array by indication which index location we want.
+- Similarly, each location in memory has an address.
+- There is only one critical thing to remember as we start working with pointers:
+  - POINTERS ARE JUST ADDRESSES.
+- A pointer, then, is a data item whose:
+  - value is a memory address.
+  - type describes the data located at the memory address.
+- As such, pointers allow data structures and/or variables to be shared among functions.
+- Pointers make a computer environment more real like the real world.
+- The simplest pointer available to us in C is the NULL pointer.
+  - As you might expect, this pointer points to nothing (a fact which can actually come in handy!).
+- When you create a pointer and you don't set its value immediately, you should always set the value of the pointer to NULL.
+- You can check whether a pointer is NULL by using the equality operator (==).
+- Another easy way to create a pointer is to simply extract the address of an already existing variable. We can do this with the address of extraction operator (&).
+- If x is an int-type variable, then &x is a pointer-to-int whose value is the address of x.
+- If arr is an array of doubles, then &arr[i] is a pointer-to-double whose value is the address of the ith element of arr.
+  - An array's name, then, is actually just a pointer to its first element- you've been working with pointers all along!
+- The main purpose of a pointer is to allow us to modify or inspect the location to which it points.
+  - We do this by dereferencing the pointer.
+- If we have a pointer-to-char pc, then *pc is the data that lives at the memory address stored inside the variable pc.
+- Used in context, * is known as the dereference operator.
+- It "goes to the reference" and accesses the data at that memory location, allowing you to manipulate it at will.
+- This is just like visiting your neighbor. Having their address isn't enough. You need to go to the address and only then can you interact with them.
+- If you try to dereference a pointer whose value is NULL, you will get Segmentation Fault.
+- Surprisingly, this is actually good behavior! It defends against accidental dangerous manipulation of unknown pointers.
+  - That's why it is recommended to set your pointers to NULL immediately if you aren't setting them to a known, desired value.
+- Example:
+
+    int *p;
+
+  - The value of p is an address.
+  - We can dereference p with the * operator.
+  - If we do, what we'll find at that location is an int.
+- One more annoying thing with those *s. They're an important part of both the type name and the variable name.
+  - Example:
+
+    int* px, py, pz; // this will give address of only px
+
+    int* pa, *pb, *pc; // this is the right way and will give address of all
+
+
+
 FILE POINTERS
 
 - The ability to read data from and write data to files is the primary means of storing persistent data, data that does not disappear when your program stops running.
@@ -154,3 +217,144 @@ FILE POINTERS
 
 
 DYNAMIC MEMORY ALLOCATION
+
+- We an use pointers to get access to a block of dynamically-allocated memory at runtime.
+- Dynamically allocated memory comes from a pool of memory known as heap.
+- Prior to this point, all memory we've been working with has been coming from a pool of memory known as the stack.
+- We get this dynamically-allocated memory by making a call to the C standard library function malloc(), passing as its parameter the number of bytes requested.
+- After obtaining the memory for you (if it can), malloc() will return a pointer to that memory.
+- What if malloc() can't give you memory? It'll hand you back NULL.
+
+    // statically obtain an integer
+    int x;
+
+    // dynamically obtain an integer
+    int *px = malloc(4);
+
+    // or
+
+    int *px = malloc(sizeof(int));
+
+    // get integer from the user
+    int x = GetInt();
+
+    // array of floats on the stack
+    float stack_array[x];
+
+    // array of floats on the heap
+    float* heap_array = malloc(x * sizeof(float));
+
+- Here's the trouble: Dynamically-allocated memory is not automatically returned to the system for later use when the function in which it's created finishes execution.
+- Failing to return memory back to the system when you're finished with it results in a memory leak which can compromise your system's performance.
+- When you finish working with dynamically-allocated memory, you must free() it.
+
+    // allocate memory
+
+    char* word = malloc(50 * sizeof(char));
+
+    // do stuff with word
+
+    // when done working with that block
+
+    free(word);
+
+- Three golden rules:
+  - Every block of memory that you malloc() must subsequently be free()ed.
+  - Only memory that you malloc() should be free()ed.
+  - Do not free() a block of memory more than once.
+
+
+
+RECURSION
+
+- We might describe an implementation of an algorithm as being particularly "elegant" if it solves a problem in a way that is both interesting and easy to visualize.
+- The technique of recursion is a very common way to implement such an "elegant" solution.
+- The definition of a recursive function is one that, as part of its execution, invokes itself.
+- The factorial function (!n) is defined over all positive integers.
+- n! equals all of the positive integers less than or equal to n, multiplied together.
+- Thinking in terms of programming, we'll define the mathematical function n! as fact (n).
+
+    fact(1) = 1
+    fact(2) = 2 * 1
+    fact(3) = 3 * 2 * 1
+    ...
+
+    // or
+
+    fact(1) = 1
+    fact(2) = 2 * fact(1)
+    fact(3) = 3 * fact(2)
+    ...
+
+    //or
+
+    fact(n) = n * fact(n-1)
+
+- This forms the basis for a recursive definition of the factorial function.
+- Every recursive function has two cases that could apply, given any input.
+  - The base case, which when triggered will terminate the recursive process.
+  - The recursive case, which is where the recursion will actually occur.
+
+    int fact(int n)
+    {
+        if (n == 1)
+        {
+            return 1;
+        }
+
+        // recursive case
+        else
+        {
+            return n * fact(n-1);
+        }
+    }
+
+    // or we can get rid of curly braces if we have only one line in the statement
+
+    int fact(int n)
+    {
+        if (n == 1)
+            return 1;
+        else
+            return n * fact(n-1);
+    }
+
+- In general, but not always, recursive functions replace loops in non-recursive functions.
+- It is also possible to have more than one base or recursive case, if the program might recurse or terminate in different ways, depending on the input being passed in.
+- Multiple base cases: The Fibonacci number sequence is defined as follows:
+  - The first element is 0.
+  - The second element is 1.
+  - The nth element is sum of the (n-1)th element and (n-2)th elements.
+- Multiple recursive cases: The Collatz conjecture.
+  - The Collatz conjecture is applied to positive integers and speculates that it is always possible to get "back to 1" if you follow these steps:
+    - If n is 1, stop.
+    - Otherwise, if n is even, repeat this process on n/2.
+    - Otherwise, if n is odd, repeat this process on 3n + 1.
+
+      int collatz(n)
+      {
+          if (n == 1)
+              return 0;
+          else if ((n % 2) == 0)
+              return 1 + collatz(n/2);
+          else
+              return 1 + collatz(3*n + 1);
+      }
+
+
+
+HEXADECIMAL
+
+- Most Western cultures use the decimal system, aka base-10, to represent numeric data.
+    0   1   2   3   4   5   6   7   8   9   0
+- As we know, computers use the binary system, aka base-2, to represent numeric (and indeed all) data.
+    0   1
+- As computer scientists, it's useful to be able to express data the same way that a computer does.
+- The problem, of course, is that trying to parse a huge chain of 0s and 1s can be quite difficult.
+- The Hexadecimal system, aka base-16, is a much more concise way to express the data on a computer's system.
+    0   1   2   3   4   5   6   7   8   9   a   b   c   d   e   f
+- Hexadecimal makes this mapping easy because a group of four binary digits (bits) is able to have 16 different combinations, and each of those combinations maps to a single hexadecimal digit.
+- Hexadecimal has place values based on power of 16.
+- To convert binary number from hexadecimal, group of four binary digits (bits) together from right to left.
+  - Pad the leftmost group with extra 0 bits at the front if necessary.
+  - Then use a conversion chart or memory to convert those bits to something a bit more concise.

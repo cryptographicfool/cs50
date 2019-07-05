@@ -43,3 +43,5 @@ A program that converts plaintext input to ciphertext using a key provided by th
 
 ### crack.c
 A program that takes hashed password as an input and outputs password in plain text. This is based on C's DES based crypt function.
+
+---
